@@ -5,6 +5,6 @@ module.exports = (app) => {
 const notFound = (req, res, next) => {
   res.status(404).send({
     success: false,
-    status: 404
+    message: 'Not Found'
   })
 }
