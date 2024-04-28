@@ -1,9 +1,9 @@
-const main = require('./main')
+const products = require('./products')
 const upload = require('./upload')
 const users = require('./users')
 
 module.exports = (app) => {
-  app.use('/users', main)
+  app.use('/products', products)
   app.use('/upload', upload)
   app.use('/users', users)
 }
