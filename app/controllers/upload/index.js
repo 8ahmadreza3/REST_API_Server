@@ -2,7 +2,7 @@ const AWS = require('../../services/AWS')
 
 module.exports.uploadImg = async (req, res, next) => {
   try {
-    const { imgFile } = req.body
+    const imgFile = req.body
     if (!imgFile) {
       return res.send({
         success: false,
