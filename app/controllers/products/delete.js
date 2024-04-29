@@ -1,4 +1,4 @@
-const BooksModel = require('../../models/productsModel')
+const ProductsModel = require('../../models/productsModel')
 const AWS = require('../../services/AWS')
 
 module.exports = async (req, res, next) => {
@@ -7,14 +7,14 @@ module.exports = async (req, res, next) => {
     if (!bookID) {
       return res.status(404).send({
         success: false,
-        message: 'Invalid',
+        message: 'Invalid'
       })
     }
-    const book = await BooksModel.findByIdAndDelete(bookID)
+    const book = await ProductsModel.findByIdAndDelete(bookID)
     if (!book) {
       return res.send({
         success: false,
-        message: 'not found',
+        message: 'not found'
       })
     }
     if (book.awsKey) {
