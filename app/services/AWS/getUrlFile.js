@@ -4,7 +4,7 @@ const client = require('./S3')
 
 module.exports = async (awsKey) => {
   const params = {
-    Bucket: process.env.LIARA_BUCKET_NAME,
+    Bucket: process.env.BUCKET_NAME,
     Key: `${awsKey}.png`
   }
   const response = await getSignedUrl(client, new GetObjectCommand(params))

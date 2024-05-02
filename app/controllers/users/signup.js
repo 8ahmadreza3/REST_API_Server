@@ -1,5 +1,6 @@
 const UsersModel = require('../../models/usersModel')
 const hashServices = require('../../services/hashService')
+const aws = require('../../services/AWS')
 
 module.exports = async (req, res, next) => {
   try {
@@ -19,7 +20,7 @@ module.exports = async (req, res, next) => {
     }
 
     const hashPassword = hashServices.hashPassword(password)
-    const img = awsKey ? process.env.LIARA_URL + awsKey + '.png' : ''
+    const img = awsKey ? aws.publicUrl(awsKey) : ''
     const newUser = new UsersModel({
       name,
       userName: userName.replaceAll(' ', '_'),

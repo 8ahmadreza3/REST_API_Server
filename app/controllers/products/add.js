@@ -1,4 +1,5 @@
 const BooksModel = require('../../models/productsModel')
+const aws = require('../../services/AWS')
 
 module.exports = async (req, res, next) => {
   try {
@@ -9,7 +10,7 @@ module.exports = async (req, res, next) => {
         message: 'Enter the information in full'
       })
     }
-    const img = awsKey ? process.env.LIARA_URL + awsKey + '.png' : ''
+    const img = awsKey ? aws.publicUrl(awsKey) : ''
     const newBook = new BooksModel({
       name,
       author,
