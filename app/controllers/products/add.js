@@ -1,4 +1,4 @@
-const BooksModel = require('../../models/productsModel')
+const ProductsModel = require('../../models/productsModel')
 const aws = require('../../services/AWS')
 
 module.exports = async (req, res, next) => {
@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
       })
     }
     const img = awsKey ? aws.publicUrl(awsKey) : ''
-    const newBook = new BooksModel({
+    const newProduct = new ProductsModel({
       name,
       author,
       category,
@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
       img,
       awsKey: awsKey || ''
     })
-    await newBook.save()
+    await newProduct.save()
     res.status(201).send({
       success: true,
       message: 'added',

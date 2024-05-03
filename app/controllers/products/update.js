@@ -2,16 +2,16 @@ const ProductsModel = require('../../models/productsModel')
 
 module.exports = async (req, res, next) => {
   try {
-    const { bookID } = req.params
-    if (!bookID) {
+    const { address } = req.params
+    if (!address) {
       return res.status(404).send({
         success: false,
         message: 'Invalid'
       })
     }
-    const book = await ProductsModel.findById(bookID)
+    const product = await ProductsModel.findById(address)
     const newAddress = req.body.address.replaceAll(' ', '_')
-    if (newAddress && newAddress !== book.address) {
+    if (newAddress && newAddress !== product.address) {
       const sameAddress = await ProductsModel.findOne({ address: newAddress })
       if (sameAddress) {
         return res.send({
@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
         })
       }
     }
-    const { n, nModified } = await ProductsModel.updateOne({ _id: bookID }, { ...req.body })
+    const { n, nModified } = await ProductsModel.updateOne({ address }, { ...req.body })
     if (n === 0 || nModified === 0) {
       return res.status(404).send({
         success: true,

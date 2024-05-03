@@ -8,7 +8,7 @@ router.post('/', [authUser], productsController.add)
 router.get('/', productsController.list)
 router.get('/recommend', productsController.recommend)
 router.get('/:address', productsController.info)
-router.delete('/:bookID', [authAdmin], productsController.remove)
-router.patch('/:bookID', [authAdmin], productsController.update)
+router.delete('/:address', [authAdmin], productsController.remove)
+router.patch('/:address', [authAdmin], productsController.update)
 
 module.exports = router

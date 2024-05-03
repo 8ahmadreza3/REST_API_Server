@@ -3,25 +3,22 @@ const AWS = require('../../services/AWS')
 
 module.exports = async (req, res, next) => {
   try {
-    const { bookID } = req.params
-    if (!bookID) {
+    const { address } = req.params
+    if (!address) {
       return res.status(404).send({
         success: false,
         message: 'Invalid'
       })
     }
-    const book = await ProductsModel.findByIdAndDelete(bookID)
-    if (!book) {
+    const product = await ProductsModel.findByIdAndDelete(address)
+    if (!product) {
       return res.send({
         success: false,
         message: 'not found'
       })
     }
-    if (book.awsKey) {
-      const remove = AWS.remove(book.awsKey)
-      if (!remove.success) {
-        return res.send(remove)
-      }
+    if (product.awsKey) {
+      AWS.remove(product.awsKey)
     }
     res.send({
       success: true,

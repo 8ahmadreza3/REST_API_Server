@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const booksSchema = new mongoose.Schema({
+const productsSchema = new mongoose.Schema({
   name: { type: String, minlength: 3 },
   company: String,
   category: String,
@@ -11,6 +11,6 @@ const booksSchema = new mongoose.Schema({
   awsKey: { type: String, default: '' }
 })
 
-const BooksModel = mongoose.model('Books', booksSchema)
+const ProductsModel = mongoose.model('Products', productsSchema)
 
-module.exports = BooksModel
+module.exports = ProductsModel
