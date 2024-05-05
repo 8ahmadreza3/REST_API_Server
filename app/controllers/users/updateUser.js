@@ -2,7 +2,14 @@ const UsersModel = require('../../models/usersModel')
 
 module.exports = async (req, res, next) => {
   try {
+    const { user } = req.data
     const { userName } = req.params
+    if (user.userName !== userName && !user.isAdmin) {
+      res.send({
+        success: false,
+        message: 'you are not authorized'
+      })
+    }
     const newUserName = req.body.userName.replaceAll(' ', '_')
     if (newUserName && newUserName !== userName) {
       const sameUserName = await UsersModel.findOne({ userName: newUserName })
