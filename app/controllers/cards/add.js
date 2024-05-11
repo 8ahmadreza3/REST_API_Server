@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     const prevCard = await CardsModel.findOne({ user, product })
     if (prevCard) {
       const { nModefied } = await CardsModel.updateOne(prevCard, { count: prevCard.count + 1 })
-      if (nModefied) {
+      if (!nModefied) {
         return res.send({
           success: false,
           message: "Couldn't update card"

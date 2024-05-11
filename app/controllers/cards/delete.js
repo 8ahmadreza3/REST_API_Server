@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     const prevCard = await CardsModel.findById(id)
     if (prevCard.count === 1) {
       const { deletedCount } = await CardsModel.deleteOne({ _id: id })
-      if (deletedCount) {
+      if (!deletedCount) {
         res.send({
           success: false,
           message: 'cannot delete'
@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
       }
     } else {
       const { nModified } = await CardsModel.updateOne(prevCard, { count: prevCard.count - 1 })
-      if (nModified) {
+      if (!nModified) {
         res.send({
           success: false,
           message: 'cannot delete'
