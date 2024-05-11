@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
     await newProduct.save()
     res.status(201).send({
       success: true,
-      message: 'added',
+      message: 'added'
     })
   } catch (error) {
     next(error)
