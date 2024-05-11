@@ -10,5 +10,6 @@ router.get('/recommend', productsController.recommend)
 router.get('/:address', productsController.info)
 router.delete('/:address', [authAdmin], productsController.remove)
 router.patch('/:address', [authAdmin], productsController.update)
+router.get('/:id', [authAdmin], productsController.cards)
 
 module.exports = router

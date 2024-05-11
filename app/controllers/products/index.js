@@ -4,6 +4,7 @@ const remove = require('./delete')
 const update = require('./update')
 const info = require('./info')
 const recommend = require('./recommend')
+const cards = require('./cards')
 
 module.exports = {
   add,
@@ -11,5 +12,6 @@ module.exports = {
   remove,
   update,
   info,
-  recommend
+  recommend,
+  cards
 }
