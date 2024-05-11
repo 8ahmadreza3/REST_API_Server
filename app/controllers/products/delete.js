@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
         message: 'Invalid'
       })
     }
-    const product = await ProductsModel.findByIdAndDelete(address)
+    const product = await ProductsModel.findOneAndDelete({ address })
     if (!product) {
       return res.send({
         success: false,
