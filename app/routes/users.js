@@ -10,5 +10,6 @@ router.post('/signup', usersController.signUpUser)
 router.delete('/:userName', [authAdmin], usersController.deleteUser)
 router.patch('/:userName', [authUser], usersController.updateUser)
 router.patch('/forgot/:userAuth', usersController.forgotPass)
+router.get('/:id', [authUser], usersController.cards)
 
 module.exports = router
