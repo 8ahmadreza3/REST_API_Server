@@ -4,8 +4,7 @@ const cardsSchema = new mongoose.Schema({
   product: String,
   user: String,
   count: Number,
-  createdAt: Date,
-  payID: String
+  createdAt: Date
 })
 
 const cardsModel = mongoose.model('Cards', cardsSchema)

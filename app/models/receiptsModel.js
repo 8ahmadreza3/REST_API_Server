@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
 
-const status = ['موفقیت آمیز', 'ناموفق']
-
 const receiptSchema = new mongoose.Schema({
-  status: { type: String, enum: status },
-  userID: String,
+  user: String,
   cards: Array,
-  price: { type: Number, default: 0}
+  price: { type: Number, default: 0},
+  payID: { type: String, unique: true }
 })
 const receiptModel = mongoose.model('Receipt', receiptSchema)
 
