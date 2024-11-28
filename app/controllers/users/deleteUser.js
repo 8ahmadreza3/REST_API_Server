@@ -5,13 +5,13 @@ module.exports = async (req, res, next) => {
   try {
     const { userName } = req.params
     if (!userName) {
-      return res.status(404).send({
+      return res.send({
         success: false,
         message: 'Invalid User'
       })
     }
     const user = await UsersModel.findOneAndDelete({ userName })
-    if (user) {
+    if (!user) {
       return res.send({
         success: false,
         message: 'user not found'
